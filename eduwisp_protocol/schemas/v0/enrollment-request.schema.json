@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/EduWISP/eduwisp-protocol/schemas/v0/enrollment-request.schema.json",
+  "$id": "https://eduwisp.org/protocol/v0/enrollment-request.schema.json",
   "title": "Richiesta di registrazione / Enrollment request",
   "description": "Inviata dall'agente al primo avvio, con il token letto dal QR code. Contiene solo i dati tecnici minimi (RC-002).",
   "type": "object",

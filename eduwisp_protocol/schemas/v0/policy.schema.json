@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/EduWISP/eduwisp-protocol/schemas/v0/policy.schema.json",
+  "$id": "https://eduwisp.org/protocol/v0/policy.schema.json",
   "title": "Policy effettiva / Effective policy",
   "description": "Impostazioni da applicare al dispositivo. Le impostazioni sono indipendenti dalla piattaforma; l'agente segnala quelle che non sa applicare.",
   "type": "object",

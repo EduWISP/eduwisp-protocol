@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/EduWISP/eduwisp-protocol/schemas/v0/enrollment-response.schema.json",
+  "$id": "https://eduwisp.org/protocol/v0/enrollment-response.schema.json",
   "title": "Risposta di registrazione / Enrollment response",
   "description": "Restituita dal server. La credenziale va conservata dall'agente in modo sicuro e inviata come 'Authorization: Bearer <device_token>'.",
   "type": "object",

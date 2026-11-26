@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/EduWISP/eduwisp-protocol/schemas/v0/status-report.schema.json",
+  "$id": "https://eduwisp.org/protocol/v0/status-report.schema.json",
   "title": "Rapporto di stato / Status report",
   "description": "Inviato dall'agente dopo aver applicato una policy e periodicamente. Solo dati tecnici minimi.",
   "type": "object",

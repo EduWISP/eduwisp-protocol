@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/EduWISP/eduwisp-protocol/schemas/v0/error.schema.json",
+  "$id": "https://eduwisp.org/protocol/v0/error.schema.json",
   "title": "Errore / Error",
   "type": "object",
   "additionalProperties": false,
