@@ -6,7 +6,7 @@
 
 Specifica aperta e versionata del protocollo tra il server EduWISP e gli **agenti di qualsiasi piattaforma** (il primo è il DPC Android): messaggi comuni, profili per piattaforma, dichiarazione delle capacità dell'agente, sicurezza e test di conformità.
 
-> 🚧 **Stato: progettazione.** Questo repository non contiene ancora codice. La progettazione è nella [documentazione EduWISP](https://eduwisp.github.io/docs/moduli/android/).
+> 🧪 **Stato: prototipo v0.** Prima bozza della specifica e degli schemi JSON: vedi [docs/developer/protocollo-v0.md](docs/developer/protocollo-v0.md). La progettazione è nella [documentazione EduWISP](https://eduwisp.github.io/docs/moduli/android/).
 
 🇬🇧 *Open, versioned specification of the protocol between the EduWISP server and **agents on any platform** (the Android DPC first): common messages, platform profiles, agent capability declaration, security and conformance tests. **Status: design phase**, no code yet. See the [design docs](https://eduwisp.github.io/docs/en/modules/android/).*
 
@@ -15,6 +15,14 @@ Specifica aperta e versionata del protocollo tra il server EduWISP e gli **agent
 - Progettazione / Design: <https://eduwisp.github.io/docs/moduli/android/>
 - Mappa dei repository / Repository map: <https://eduwisp.github.io/docs/architettura/repository/>
 - Documentazione del modulo / Module docs: [`docs/user/`](docs/user/) · [`docs/developer/`](docs/developer/)
+
+## Uso / Usage
+
+```bash
+pip install -e .
+python -c "from eduwisp_protocol import validate; validate('policy', {...})"
+pytest
+```
 
 ## Dipendenze / Dependencies
 

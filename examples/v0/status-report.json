@@ -1,0 +1,8 @@
+{
+  "protocol_version": "0",
+  "policy_version_applied": 3,
+  "compliant": false,
+  "non_compliance": [{ "setting": "screen_capture_disabled", "reason": "unsupported" }],
+  "agent_version": "0.1.0",
+  "os_version": "15"
+}

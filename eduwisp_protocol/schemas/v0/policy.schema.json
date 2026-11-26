@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/EduWISP/eduwisp-protocol/schemas/v0/policy.schema.json",
+  "title": "Policy effettiva / Effective policy",
+  "description": "Impostazioni da applicare al dispositivo. Le impostazioni sono indipendenti dalla piattaforma; l'agente segnala quelle che non sa applicare.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["protocol_version", "policy_version", "settings", "poll_interval_seconds"],
+  "properties": {
+    "protocol_version": { "const": "0" },
+    "policy_version": { "type": "integer", "minimum": 1 },
+    "poll_interval_seconds": { "type": "integer", "minimum": 60, "maximum": 86400 },
+    "settings": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "camera_disabled": { "type": "boolean" },
+        "screen_capture_disabled": { "type": "boolean" }
+      }
+    }
+  }
+}
