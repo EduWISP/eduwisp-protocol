@@ -60,6 +60,16 @@ Tecnico della scuola         Server EduWISP                    Agente (DPC)
 | `camera_disabled` | booleano | Fotocamere disattivate |
 | `screen_capture_disabled` | booleano | Acquisizione dello schermo disattivata |
 
+## Accesso dei familiari agli studenti maggiorenni
+
+Campi facoltativi, aggiunti senza cambiare versione: gli agenti che non li conoscono continuano a funzionare ([ADR-0018](https://eduwisp.org/docs/decisioni/0018-interfaccia-per-ruoli/)).
+
+- Nella **policy**, `family_access` compare solo se il dispositivo è affidato a uno studente maggiorenne: `{"choice_requested": true, "granted": null}`. `granted` è la scelta registrata (`null` = non ancora fatta: i familiari non hanno accesso).
+- L'agente mostra la scelta allo studente e la fa **confermare con il blocco schermo** del dispositivo.
+- Nel **rapporto di stato**, `family_access_choice` riporta la scelta: `{"granted": false, "decided_at": "<data e ora>"}`. Il server la accetta solo se l'aveva chiesta e se è più recente di quella registrata, e la scrive nel registro delle operazioni.
+
+Esempi: [`policy-family-access.json`](../../examples/v0/policy-family-access.json), [`status-report-family-access.json`](../../examples/v0/status-report-family-access.json).
+
 ## Sicurezza
 
 - Il token di registrazione è casuale, ha una scadenza e un numero massimo di usi; il server ne conserva solo l'hash.
@@ -70,4 +80,4 @@ Tecnico della scuola         Server EduWISP                    Agente (DPC)
 
 ### English summary
 
-Version 0 (prototype) defines three calls under `/api/protocol/v0/`: `POST /enroll` (enrollment token from the provisioning QR code → `device_id` and `device_token`), `GET /policy` (platform-independent effective policy, `Authorization: Bearer <device_token>`), and `POST /status` (applied policy version, compliance, unsupported settings). Messages are JSON, validated by JSON Schema 2020-12 with no unknown fields allowed (data minimisation). The agent polls; no proprietary push services.
+Version 0 (prototype) defines three calls under `/api/protocol/v0/`: `POST /enroll` (enrollment token from the provisioning QR code → `device_id` and `device_token`), `GET /policy` (platform-independent effective policy, `Authorization: Bearer <device_token>`), and `POST /status` (applied policy version, compliance, unsupported settings). Messages are JSON, validated by JSON Schema 2020-12 with no unknown fields allowed (data minimisation). Optional `family_access` (policy) and `family_access_choice` (status) let an adult student decide on their device, confirmed with the screen lock, whether family members keep access (ADR-0018). The agent polls; no proprietary push services.

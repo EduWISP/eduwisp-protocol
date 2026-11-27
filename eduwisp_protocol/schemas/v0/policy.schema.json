@@ -5,17 +5,55 @@
   "description": "Impostazioni da applicare al dispositivo. Le impostazioni sono indipendenti dalla piattaforma; l'agente segnala quelle che non sa applicare.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["protocol_version", "policy_version", "settings", "poll_interval_seconds"],
+  "required": [
+    "protocol_version",
+    "policy_version",
+    "settings",
+    "poll_interval_seconds"
+  ],
   "properties": {
-    "protocol_version": { "const": "0" },
-    "policy_version": { "type": "integer", "minimum": 1 },
-    "poll_interval_seconds": { "type": "integer", "minimum": 60, "maximum": 86400 },
+    "protocol_version": {
+      "const": "0"
+    },
+    "policy_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "poll_interval_seconds": {
+      "type": "integer",
+      "minimum": 60,
+      "maximum": 86400
+    },
     "settings": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "camera_disabled": { "type": "boolean" },
-        "screen_capture_disabled": { "type": "boolean" }
+        "camera_disabled": {
+          "type": "boolean"
+        },
+        "screen_capture_disabled": {
+          "type": "boolean"
+        }
+      }
+    },
+    "family_access": {
+      "description": "Presente solo se il dispositivo è affidato a uno studente maggiorenne (ADR-0018): l'agente chiede allo studente se lasciare l'accesso ai familiari. granted: scelta registrata dal server, null se non ancora fatta.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "choice_requested",
+        "granted"
+      ],
+      "properties": {
+        "choice_requested": {
+          "const": true
+        },
+        "granted": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
       }
     }
   }
