@@ -72,3 +72,12 @@ def test_app_identificativo_non_valido():
     data["apps"]["allowed"].append({"id": "../etc/passwd"})
     with pytest.raises(ProtocolError):
         validate("policy", data)
+
+
+def test_capacita_app_consentite():
+    data = json.loads((EXAMPLES / "enrollment-request.json").read_text(encoding="utf-8"))
+    data["capabilities"].append("apps:allowlist")
+    validate("enrollment-request", data)
+    data["capabilities"].append("apps:qualsiasi")
+    with pytest.raises(ProtocolError):
+        validate("enrollment-request", data)
