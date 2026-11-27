@@ -45,6 +45,12 @@
       "com.snapchat.android",
       "com.zhiliaoapp.musically",
       "org.torproject.torbrowser"
+    ],
+    "requests": [
+      {
+        "id": "org.example.dizionario",
+        "status": "pending"
+      }
     ]
   }
 }

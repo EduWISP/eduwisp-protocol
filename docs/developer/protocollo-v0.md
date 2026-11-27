@@ -59,6 +59,7 @@ Tecnico della scuola         Server EduWISP                    Agente (DPC)
 - Corpo: [`app-request`](../../eduwisp_protocol/schemas/v0/app-request.schema.json): l'app che lo studente chiede di usare e una motivazione facoltativa ([ADR-0021](https://eduwisp.org/docs/decisioni/0021-richieste-di-app/)).
 - Risposta `201` con `{"status": "pending"}`, oppure `200` con `{"status": "pending"}` se una richiesta per la stessa app è già in attesa, oppure `200` con `{"status": "rejected"}` se l'app è vietata dalla piattaforma.
 - Errori: `409 not_personal_device` se il tablet non è affidato a uno studente.
+- Nella policy, `apps.requests` riporta lo stato delle richieste dello studente (`pending`, `approved`, `rejected`), così il tablet mostra la decisione.
 
 ## Impostazioni della v0
 

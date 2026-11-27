@@ -146,6 +146,32 @@
             "type": "string",
             "pattern": "^[A-Za-z0-9_][A-Za-z0-9._-]{0,254}$"
           }
+        },
+        "requests": {
+          "type": "array",
+          "maxItems": 200,
+          "description": "Stato delle richieste di app dello studente a cui il tablet è affidato (ADR-0021), le più recenti per ogni app.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "status"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_][A-Za-z0-9._-]{0,254}$"
+              },
+              "status": {
+                "enum": [
+                  "pending",
+                  "approved",
+                  "rejected"
+                ]
+              }
+            }
+          }
         }
       }
     }
