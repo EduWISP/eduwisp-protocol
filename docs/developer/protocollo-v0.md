@@ -72,6 +72,8 @@ Campo facoltativo `apps` nella policy ([ADR-0019](https://eduwisp.org/docs/decis
 
 L'agente sospende le app da bloccare tranne quelle protette (l'agente stesso, la schermata Home, le tastiere attive), vieta le installazioni da fonti sconosciute, richiude le app sbloccate alla scadenza anche senza rete e segnala allo studente le app obbligatorie non ancora installate (rapporto: `apps_required` con motivo `pending`). Un agente che non sa applicare l'elenco lo segnala come `apps` non supportato. Nessun elenco delle app installate viene inviato al server.
 
+Per le app obbligatorie ([ADR-0020](https://eduwisp.org/docs/decisioni/0020-app-obbligatorie/)) una voce di `allowed` può avere anche `icon` (logo pubblico) e `install`: `{"url": ..., "sha256": ..., "size": ...}`. L'agente scarica l'APK da `url` con `Authorization: Bearer <device_token>`, controlla che l'impronta SHA-256 corrisponda e lo installa in silenzio come proprietario del dispositivo; se l'impronta non corrisponde lo scarta e segnala `apps_required` con motivo `failed`.
+
 Esempio: [`policy-apps.json`](../../examples/v0/policy-apps.json).
 
 ## Accesso dei familiari agli studenti maggiorenni

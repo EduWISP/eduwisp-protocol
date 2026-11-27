@@ -10,6 +10,17 @@
     "mode": "allowlist",
     "allowed": [
       {
+        "id": "org.example.atlante",
+        "name": "Atlante della scuola",
+        "required": true,
+        "icon": "https://demo.eduwisp.org/media/app/atlante.png",
+        "install": {
+          "url": "https://demo.eduwisp.org/api/protocol/v0/apps/12/apk",
+          "sha256": "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+          "size": 5242880
+        }
+      },
+      {
         "id": "com.microsoft.teams",
         "required": true,
         "name": "Microsoft Teams"
