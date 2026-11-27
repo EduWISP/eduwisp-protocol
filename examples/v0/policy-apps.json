@@ -11,11 +11,13 @@
     "allowed": [
       {
         "id": "com.microsoft.teams",
-        "required": true
+        "required": true,
+        "name": "Microsoft Teams"
       },
       {
         "id": "it.maieuticallabs.mylim",
-        "required": true
+        "required": true,
+        "name": "MyLIM"
       },
       {
         "id": "org.geogebra.android.calculator.suite"

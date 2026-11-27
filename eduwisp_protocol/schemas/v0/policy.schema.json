@@ -99,6 +99,11 @@
               },
               "required": {
                 "type": "boolean"
+              },
+              "name": {
+                "type": "string",
+                "maxLength": 100,
+                "description": "Nome da mostrare allo studente (per esempio per le app obbligatorie)."
               }
             }
           }
