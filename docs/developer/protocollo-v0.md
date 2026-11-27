@@ -6,10 +6,10 @@
 
 ## Principi
 
-- **Indipendente dalla piattaforma** ([ADR-0011](https://eduwisp.github.io/docs/decisioni/0011-multipiattaforma/)): le impostazioni sono concetti comuni (`camera_disabled`), non API Android.
+- **Indipendente dalla piattaforma** ([ADR-0011](https://eduwisp.org/docs/decisioni/0011-multipiattaforma/)): le impostazioni sono concetti comuni (`camera_disabled`), non API Android.
 - **Minimizzazione** (RC-002): ogni campo ha una finalità; i campi non previsti vengono rifiutati (`additionalProperties: false`). Niente IMEI, MAC, posizione, numero di serie.
 - **L'agente dichiara cosa sa fare** (RNF-015) e segnala le impostazioni che non riesce ad applicare.
-- **Solo software libero** ([ADR-0009](https://eduwisp.github.io/docs/decisioni/0009-solo-software-libero/)): l'agente interroga il server periodicamente; nessun servizio di notifica proprietario.
+- **Solo software libero** ([ADR-0009](https://eduwisp.org/docs/decisioni/0009-solo-software-libero/)): l'agente interroga il server periodicamente; nessun servizio di notifica proprietario.
 
 ## Trasporto
 

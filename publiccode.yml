@@ -3,7 +3,7 @@ publiccodeYmlVersion: "0"
 
 name: eduwisp-protocol
 url: "https://github.com/EduWISP/eduwisp-protocol"
-landingURL: "https://eduwisp.github.io/docs/moduli/android/"
+landingURL: "https://eduwisp.org/docs/moduli/android/"
 platforms:
   - web
   - linux
@@ -23,14 +23,14 @@ intendedAudience:
 description:
   it:
     shortDescription: "EduWISP — Protocollo server-agente"
-    longDescription: "Specifica aperta e versionata del protocollo tra il server EduWISP e gli **agenti di qualsiasi piattaforma** (il primo è il DPC Android): messaggi comuni, profili per piattaforma, dichiarazione delle capacità dell'agente, sicurezza e test di conformità. Fa parte di EduWISP, piattaforma open source e gratuita per la gestione dei dispositivi digitali di proprietà delle scuole, con MDM, gestione scolastica, Family Control e prevenzione del cyberbullismo. Il progetto è in fase di progettazione e rispetta come vincolo bloccante il GDPR e la normativa italiana su privacy e minori. Documentazione: https://eduwisp.github.io/docs/"
-    documentation: "https://eduwisp.github.io/docs/"
+    longDescription: "Specifica aperta e versionata del protocollo tra il server EduWISP e gli **agenti di qualsiasi piattaforma** (il primo è il DPC Android): messaggi comuni, profili per piattaforma, dichiarazione delle capacità dell'agente, sicurezza e test di conformità. Fa parte di EduWISP, piattaforma open source e gratuita per la gestione dei dispositivi digitali di proprietà delle scuole, con MDM, gestione scolastica, Family Control e prevenzione del cyberbullismo. Il progetto è in fase di progettazione e rispetta come vincolo bloccante il GDPR e la normativa italiana su privacy e minori. Documentazione: https://eduwisp.org/docs/"
+    documentation: "https://eduwisp.org/docs/"
     features:
       - "Protocollo server-agente"
   en:
     shortDescription: "EduWISP — Server-agent protocol"
-    longDescription: "Open, versioned specification of the protocol between the EduWISP server and **agents on any platform** (the Android DPC first): common messages, platform profiles, agent capability declaration, security and conformance tests. Part of EduWISP, a free and open-source platform to manage school-owned digital devices, with MDM, school management, family control and cyberbullying prevention. The project is in the design phase and treats GDPR and Italian law on privacy and minors as a blocking constraint. Documentation: https://eduwisp.github.io/docs/en/"
-    documentation: "https://eduwisp.github.io/docs/en/"
+    longDescription: "Open, versioned specification of the protocol between the EduWISP server and **agents on any platform** (the Android DPC first): common messages, platform profiles, agent capability declaration, security and conformance tests. Part of EduWISP, a free and open-source platform to manage school-owned digital devices, with MDM, school management, family control and cyberbullying prevention. The project is in the design phase and treats GDPR and Italian law on privacy and minors as a blocking constraint. Documentation: https://eduwisp.org/docs/en/"
+    documentation: "https://eduwisp.org/docs/en/"
     features:
       - "Server-agent protocol"
 
