@@ -1,0 +1,6 @@
+{
+  "protocol_version": "0",
+  "enrollment_token": "esempio-token-fittizio-0123456789",
+  "agent": { "platform": "android", "agent_version": "0.1.0", "os_version": "15", "model": "Tablet di prova" },
+  "capabilities": ["setting:camera_disabled", "setting:screen_capture_disabled"]
+}
