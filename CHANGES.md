@@ -8,3 +8,4 @@
 - Campi facoltativi `family_access` (policy) e `family_access_choice` (stato) per la scelta degli studenti maggiorenni (ADR-0018). / *Optional fields for adult students' family-access choice.*
 - Campo facoltativo `apps` nella policy: elenco di app consentite con scadenza degli sblocchi temporanei (ADR-0019). / *Optional `apps` allowlist in the policy (ADR-0019).*
 - Campi facoltativi `icon` e `install` (APK con impronta SHA-256) per le app obbligatorie (ADR-0020). / *Optional `icon` and `install` for required apps.*
+- Messaggio `app-request` (`POST /api/protocol/v0/app-requests`): richiesta di un'app dallo studente (ADR-0021). / *`app-request` message for student app requests.*

@@ -1,0 +1,8 @@
+{
+  "protocol_version": "0",
+  "app": {
+    "id": "org.example.dizionario",
+    "name": "Dizionario di latino"
+  },
+  "note": "Mi serve per le versioni di latino a casa."
+}

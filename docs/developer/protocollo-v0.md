@@ -53,6 +53,14 @@ Tecnico della scuola         Server EduWISP                    Agente (DPC)
 - Corpo: [`status-report`](../../eduwisp_protocol/schemas/v0/status-report.schema.json).
 - Risposta `204`.
 
+### 4. Richiesta di un'app — `POST /api/protocol/v0/app-requests`
+
+- Intestazione: `Authorization: Bearer <device_token>`.
+- Corpo: [`app-request`](../../eduwisp_protocol/schemas/v0/app-request.schema.json): l'app che lo studente chiede di usare e una motivazione facoltativa ([ADR-0021](https://eduwisp.org/docs/decisioni/0021-richieste-di-app/)).
+- Risposta `201` con `{"status": "pending"}`, oppure `200` con `{"status": "pending"}` se una richiesta per la stessa app è già in attesa, oppure `200` con `{"status": "rejected"}` se l'app è vietata dalla piattaforma.
+- Errori: `409 not_personal_device` se il tablet non è affidato a uno studente.
+- Nella policy, `apps.requests` riporta lo stato delle richieste dello studente (`pending`, `approved`, `rejected`), così il tablet mostra la decisione.
+
 ## Impostazioni della v0
 
 | Impostazione | Tipo | Significato |
@@ -96,4 +104,4 @@ Esempi: [`policy-family-access.json`](../../examples/v0/policy-family-access.jso
 
 ### English summary
 
-Version 0 (prototype) defines three calls under `/api/protocol/v0/`: `POST /enroll` (enrollment token from the provisioning QR code → `device_id` and `device_token`), `GET /policy` (platform-independent effective policy, `Authorization: Bearer <device_token>`), and `POST /status` (applied policy version, compliance, unsupported settings). Messages are JSON, validated by JSON Schema 2020-12 with no unknown fields allowed (data minimisation). Optional `apps` (policy) carries the app allowlist with optional unlock expiry (ADR-0019). Optional `family_access` (policy) and `family_access_choice` (status) let an adult student decide on their device, confirmed with the screen lock, whether family members keep access (ADR-0018). The agent polls; no proprietary push services.
+Version 0 (prototype) defines four calls under `/api/protocol/v0/` (the fourth, `POST /app-requests`, sends a student's request to use one suspended app, ADR-0021): `POST /enroll` (enrollment token from the provisioning QR code → `device_id` and `device_token`), `GET /policy` (platform-independent effective policy, `Authorization: Bearer <device_token>`), and `POST /status` (applied policy version, compliance, unsupported settings). Messages are JSON, validated by JSON Schema 2020-12 with no unknown fields allowed (data minimisation). Optional `apps` (policy) carries the app allowlist with optional unlock expiry (ADR-0019). Optional `family_access` (policy) and `family_access_choice` (status) let an adult student decide on their device, confirmed with the screen lock, whether family members keep access (ADR-0018). The agent polls; no proprietary push services.

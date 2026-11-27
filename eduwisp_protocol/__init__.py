@@ -20,6 +20,7 @@ MESSAGES = (
     "policy",
     "status-report",
     "error",
+    "app-request",
 )
 
 
