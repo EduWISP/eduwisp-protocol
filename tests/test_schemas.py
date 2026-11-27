@@ -53,6 +53,7 @@ def test_messaggio_sconosciuto():
     [
         ("policy", "policy-family-access.json"),
         ("status-report", "status-report-family-access.json"),
+        ("policy", "policy-apps.json"),
     ],
 )
 def test_esempi_accesso_familiari(name, file):
@@ -64,3 +65,10 @@ def test_scelta_dei_familiari_senza_campi_in_piu():
     data["family_access_choice"]["nome_genitore"] = "non deve essere accettato"
     with pytest.raises(ProtocolError):
         validate("status-report", data)
+
+
+def test_app_identificativo_non_valido():
+    data = json.loads((EXAMPLES / "policy-apps.json").read_text(encoding="utf-8"))
+    data["apps"]["allowed"].append({"id": "../etc/passwd"})
+    with pytest.raises(ProtocolError):
+        validate("policy", data)

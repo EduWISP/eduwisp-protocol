@@ -60,6 +60,17 @@ Tecnico della scuola         Server EduWISP                    Agente (DPC)
 | `camera_disabled` | booleano | Fotocamere disattivate |
 | `screen_capture_disabled` | booleano | Acquisizione dello schermo disattivata |
 
+## App consentite
+
+Campo facoltativo `apps` nella policy ([ADR-0019](https://eduwisp.org/docs/decisioni/0019-app-consentite/)), per gli agenti che dichiarano la capacità `apps:allowlist`:
+
+- `mode`: `allowlist` (unica modalità della v0);
+- `allowed`: identificativi delle app consentite (per Android il nome del pacchetto), ciascuno con un'eventuale scadenza `until` per gli sblocchi temporanei.
+
+L'agente sospende le app con icona che non sono nell'elenco, tranne quelle protette (l'agente stesso, la schermata Home, le tastiere attive), vieta le installazioni da fonti sconosciute e richiude le app sbloccate alla scadenza anche senza rete. Un agente che non sa applicare l'elenco lo segnala come `apps` non supportato. Nessun elenco delle app installate viene inviato al server.
+
+Esempio: [`policy-apps.json`](../../examples/v0/policy-apps.json).
+
 ## Accesso dei familiari agli studenti maggiorenni
 
 Campi facoltativi, aggiunti senza cambiare versione: gli agenti che non li conoscono continuano a funzionare ([ADR-0018](https://eduwisp.org/docs/decisioni/0018-interfaccia-per-ruoli/)).
@@ -80,4 +91,4 @@ Esempi: [`policy-family-access.json`](../../examples/v0/policy-family-access.jso
 
 ### English summary
 
-Version 0 (prototype) defines three calls under `/api/protocol/v0/`: `POST /enroll` (enrollment token from the provisioning QR code → `device_id` and `device_token`), `GET /policy` (platform-independent effective policy, `Authorization: Bearer <device_token>`), and `POST /status` (applied policy version, compliance, unsupported settings). Messages are JSON, validated by JSON Schema 2020-12 with no unknown fields allowed (data minimisation). Optional `family_access` (policy) and `family_access_choice` (status) let an adult student decide on their device, confirmed with the screen lock, whether family members keep access (ADR-0018). The agent polls; no proprietary push services.
+Version 0 (prototype) defines three calls under `/api/protocol/v0/`: `POST /enroll` (enrollment token from the provisioning QR code → `device_id` and `device_token`), `GET /policy` (platform-independent effective policy, `Authorization: Bearer <device_token>`), and `POST /status` (applied policy version, compliance, unsupported settings). Messages are JSON, validated by JSON Schema 2020-12 with no unknown fields allowed (data minimisation). Optional `apps` (policy) carries the app allowlist with optional unlock expiry (ADR-0019). Optional `family_access` (policy) and `family_access_choice` (status) let an adult student decide on their device, confirmed with the screen lock, whether family members keep access (ADR-0018). The agent polls; no proprietary push services.

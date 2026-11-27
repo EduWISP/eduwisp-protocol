@@ -55,6 +55,43 @@
           ]
         }
       }
+    },
+    "apps": {
+      "description": "App consentite (ADR-0019). Con mode allowlist l'agente sospende le app con icona che non sono nell'elenco, tranne quelle protette. until: scadenza di uno sblocco temporaneo; l'agente richiude l'app alla scadenza anche offline.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "allowed"
+      ],
+      "properties": {
+        "mode": {
+          "const": "allowlist"
+        },
+        "allowed": {
+          "type": "array",
+          "maxItems": 500,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_][A-Za-z0-9._-]{0,254}$"
+              },
+              "until": {
+                "type": "string",
+                "format": "date-time",
+                "maxLength": 40
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
