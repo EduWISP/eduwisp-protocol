@@ -2,13 +2,36 @@
   "protocol_version": "0",
   "policy_version": 7,
   "poll_interval_seconds": 900,
-  "settings": { "camera_disabled": false, "screen_capture_disabled": true },
+  "settings": {
+    "camera_disabled": false,
+    "screen_capture_disabled": true
+  },
   "apps": {
     "mode": "allowlist",
     "allowed": [
-      { "id": "org.mozilla.firefox" },
-      { "id": "org.geogebra.android.calculator.suite" },
-      { "id": "org.wikipedia", "until": "2027-03-02T11:00:00+01:00" }
+      {
+        "id": "com.microsoft.teams",
+        "required": true
+      },
+      {
+        "id": "it.maieuticallabs.mylim",
+        "required": true
+      },
+      {
+        "id": "org.geogebra.android.calculator.suite"
+      },
+      {
+        "id": "org.mozilla.firefox"
+      },
+      {
+        "id": "org.wikipedia",
+        "until": "2027-03-02T11:00:00+01:00"
+      }
+    ],
+    "blocked": [
+      "com.snapchat.android",
+      "com.zhiliaoapp.musically",
+      "org.torproject.torbrowser"
     ]
   }
 }

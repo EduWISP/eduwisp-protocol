@@ -81,3 +81,16 @@ def test_capacita_app_consentite():
     data["capabilities"].append("apps:qualsiasi")
     with pytest.raises(ProtocolError):
         validate("enrollment-request", data)
+
+
+def test_app_vietate_senza_elenco_consentite():
+    validate(
+        "policy",
+        {
+            "protocol_version": "0",
+            "policy_version": 1,
+            "poll_interval_seconds": 900,
+            "settings": {},
+            "apps": {"mode": "blocklist", "allowed": [], "blocked": ["com.snapchat.android"]},
+        },
+    )

@@ -57,7 +57,7 @@
       }
     },
     "apps": {
-      "description": "App consentite (ADR-0019). Con mode allowlist l'agente sospende le app con icona che non sono nell'elenco, tranne quelle protette. until: scadenza di uno sblocco temporaneo; l'agente richiude l'app alla scadenza anche offline.",
+      "description": "App (ADR-0019). allowlist: l'agente sospende le app con icona non presenti in allowed. blocklist: sospende solo quelle in blocked. In entrambi i casi le app in blocked sono sempre sospese (app vietate dalla piattaforma) e le installazioni da fonti sconosciute sono vietate. required: app obbligatorie, che l'agente segnala allo studente finché non sono installate. until: scadenza di uno sblocco temporaneo, rispettata anche offline.",
       "type": "object",
       "additionalProperties": false,
       "required": [
@@ -66,7 +66,10 @@
       ],
       "properties": {
         "mode": {
-          "const": "allowlist"
+          "enum": [
+            "allowlist",
+            "blocklist"
+          ]
         },
         "allowed": {
           "type": "array",
@@ -87,8 +90,20 @@
                 "type": "string",
                 "format": "date-time",
                 "maxLength": 40
+              },
+              "required": {
+                "type": "boolean"
               }
             }
+          }
+        },
+        "blocked": {
+          "type": "array",
+          "maxItems": 1000,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_][A-Za-z0-9._-]{0,254}$"
           }
         }
       }

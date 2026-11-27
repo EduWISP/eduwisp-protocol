@@ -59,15 +59,18 @@ Tecnico della scuola         Server EduWISP                    Agente (DPC)
 |---|---|---|
 | `camera_disabled` | booleano | Fotocamere disattivate |
 | `screen_capture_disabled` | booleano | Acquisizione dello schermo disattivata |
+| `vpn_config_disabled` | booleano | Configurazione di VPN vietata: le app VPN non possono attivarsi |
+| `private_dns_config_disabled` | booleano | Modifica del DNS privato vietata |
 
 ## App consentite
 
 Campo facoltativo `apps` nella policy ([ADR-0019](https://eduwisp.org/docs/decisioni/0019-app-consentite/)), per gli agenti che dichiarano la capacità `apps:allowlist`:
 
-- `mode`: `allowlist` (unica modalità della v0);
-- `allowed`: identificativi delle app consentite (per Android il nome del pacchetto), ciascuno con un'eventuale scadenza `until` per gli sblocchi temporanei.
+- `mode`: `allowlist` (si usano solo le app in `allowed`) oppure `blocklist` (si bloccano solo le app in `blocked`, quando l'istituto non usa l'elenco di app consentite);
+- `allowed`: identificativi delle app consentite (per Android il nome del pacchetto), ciascuno con un'eventuale scadenza `until` per gli sblocchi temporanei e `required: true` per le app obbligatorie;
+- `blocked`: app vietate dalla piattaforma (social, VPN, Tor...), sempre sospese in entrambe le modalità.
 
-L'agente sospende le app con icona che non sono nell'elenco, tranne quelle protette (l'agente stesso, la schermata Home, le tastiere attive), vieta le installazioni da fonti sconosciute e richiude le app sbloccate alla scadenza anche senza rete. Un agente che non sa applicare l'elenco lo segnala come `apps` non supportato. Nessun elenco delle app installate viene inviato al server.
+L'agente sospende le app da bloccare tranne quelle protette (l'agente stesso, la schermata Home, le tastiere attive), vieta le installazioni da fonti sconosciute, richiude le app sbloccate alla scadenza anche senza rete e segnala allo studente le app obbligatorie non ancora installate (rapporto: `apps_required` con motivo `pending`). Un agente che non sa applicare l'elenco lo segnala come `apps` non supportato. Nessun elenco delle app installate viene inviato al server.
 
 Esempio: [`policy-apps.json`](../../examples/v0/policy-apps.json).
 
