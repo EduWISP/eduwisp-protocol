@@ -5,25 +5,73 @@
   "description": "Inviato dall'agente dopo aver applicato una policy e periodicamente. Solo dati tecnici minimi.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["protocol_version", "policy_version_applied", "compliant"],
+  "required": [
+    "protocol_version",
+    "policy_version_applied",
+    "compliant"
+  ],
   "properties": {
-    "protocol_version": { "const": "0" },
-    "policy_version_applied": { "type": "integer", "minimum": 0 },
-    "compliant": { "type": "boolean" },
+    "protocol_version": {
+      "const": "0"
+    },
+    "policy_version_applied": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "compliant": {
+      "type": "boolean"
+    },
     "non_compliance": {
       "type": "array",
       "maxItems": 100,
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["setting", "reason"],
+        "required": [
+          "setting",
+          "reason"
+        ],
         "properties": {
-          "setting": { "type": "string", "pattern": "^[a-z][a-z0-9_]{1,63}$" },
-          "reason": { "enum": ["unsupported", "failed", "pending"] }
+          "setting": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]{1,63}$"
+          },
+          "reason": {
+            "enum": [
+              "unsupported",
+              "failed",
+              "pending"
+            ]
+          }
         }
       }
     },
-    "agent_version": { "type": "string", "maxLength": 32 },
-    "os_version": { "type": "string", "maxLength": 32 }
+    "agent_version": {
+      "type": "string",
+      "maxLength": 32
+    },
+    "os_version": {
+      "type": "string",
+      "maxLength": 32
+    },
+    "family_access_choice": {
+      "description": "Scelta dello studente maggiorenne, confermata con il blocco schermo del dispositivo (ADR-0018). Il server la accetta solo se la policy l'aveva chiesta e se è più recente di quella registrata.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "granted",
+        "decided_at"
+      ],
+      "properties": {
+        "granted": {
+          "type": "boolean"
+        },
+        "decided_at": {
+          "type": "string",
+          "format": "date-time",
+          "maxLength": 40
+        }
+      }
+    }
   }
 }

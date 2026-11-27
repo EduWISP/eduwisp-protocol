@@ -1,0 +1,8 @@
+{
+  "protocol_version": "0",
+  "policy_version_applied": 4,
+  "compliant": true,
+  "agent_version": "0.2.0",
+  "os_version": "15",
+  "family_access_choice": { "granted": false, "decided_at": "2027-03-02T08:15:00+01:00" }
+}

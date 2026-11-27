@@ -46,3 +46,21 @@ def test_versione_sbagliata_rifiutata():
 def test_messaggio_sconosciuto():
     with pytest.raises(KeyError):
         load_schema("inesistente")
+
+
+@pytest.mark.parametrize(
+    "name,file",
+    [
+        ("policy", "policy-family-access.json"),
+        ("status-report", "status-report-family-access.json"),
+    ],
+)
+def test_esempi_accesso_familiari(name, file):
+    validate(name, json.loads((EXAMPLES / file).read_text(encoding="utf-8")))
+
+
+def test_scelta_dei_familiari_senza_campi_in_piu():
+    data = json.loads((EXAMPLES / "status-report-family-access.json").read_text(encoding="utf-8"))
+    data["family_access_choice"]["nome_genitore"] = "non deve essere accettato"
+    with pytest.raises(ProtocolError):
+        validate("status-report", data)
