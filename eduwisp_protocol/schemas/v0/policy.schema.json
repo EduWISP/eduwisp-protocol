@@ -33,6 +33,12 @@
         },
         "screen_capture_disabled": {
           "type": "boolean"
+        },
+        "vpn_config_disabled": {
+          "type": "boolean"
+        },
+        "private_dns_config_disabled": {
+          "type": "boolean"
         }
       }
     },
@@ -53,6 +59,63 @@
             "boolean",
             "null"
           ]
+        }
+      }
+    },
+    "apps": {
+      "description": "App (ADR-0019). allowlist: l'agente sospende le app con icona non presenti in allowed. blocklist: sospende solo quelle in blocked. In entrambi i casi le app in blocked sono sempre sospese (app vietate dalla piattaforma) e le installazioni da fonti sconosciute sono vietate. required: app obbligatorie, che l'agente segnala allo studente finché non sono installate. until: scadenza di uno sblocco temporaneo, rispettata anche offline.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "allowed"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "allowlist",
+            "blocklist"
+          ]
+        },
+        "allowed": {
+          "type": "array",
+          "maxItems": 500,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_][A-Za-z0-9._-]{0,254}$"
+              },
+              "until": {
+                "type": "string",
+                "format": "date-time",
+                "maxLength": 40
+              },
+              "required": {
+                "type": "boolean"
+              },
+              "name": {
+                "type": "string",
+                "maxLength": 100,
+                "description": "Nome da mostrare allo studente (per esempio per le app obbligatorie)."
+              }
+            }
+          }
+        },
+        "blocked": {
+          "type": "array",
+          "maxItems": 1000,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_][A-Za-z0-9._-]{0,254}$"
+          }
         }
       }
     }

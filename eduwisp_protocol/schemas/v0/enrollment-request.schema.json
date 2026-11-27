@@ -5,25 +5,57 @@
   "description": "Inviata dall'agente al primo avvio, con il token letto dal QR code. Contiene solo i dati tecnici minimi (RC-002).",
   "type": "object",
   "additionalProperties": false,
-  "required": ["protocol_version", "enrollment_token", "agent", "capabilities"],
+  "required": [
+    "protocol_version",
+    "enrollment_token",
+    "agent",
+    "capabilities"
+  ],
   "properties": {
-    "protocol_version": { "const": "0" },
-    "enrollment_token": { "type": "string", "minLength": 20, "maxLength": 200 },
+    "protocol_version": {
+      "const": "0"
+    },
+    "enrollment_token": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 200
+    },
     "agent": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["platform", "agent_version", "os_version"],
+      "required": [
+        "platform",
+        "agent_version",
+        "os_version"
+      ],
       "properties": {
-        "platform": { "type": "string", "pattern": "^[a-z][a-z0-9-]{1,31}$", "description": "Piattaforma dell'agente, per esempio 'android' (ADR-0011)." },
-        "agent_version": { "type": "string", "maxLength": 32 },
-        "os_version": { "type": "string", "maxLength": 32 },
-        "model": { "type": "string", "maxLength": 64, "description": "Modello del dispositivo. Facoltativo." }
+        "platform": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9-]{1,31}$",
+          "description": "Piattaforma dell'agente, per esempio 'android' (ADR-0011)."
+        },
+        "agent_version": {
+          "type": "string",
+          "maxLength": 32
+        },
+        "os_version": {
+          "type": "string",
+          "maxLength": 32
+        },
+        "model": {
+          "type": "string",
+          "maxLength": 64,
+          "description": "Modello del dispositivo. Facoltativo."
+        }
       }
     },
     "capabilities": {
       "type": "array",
-      "description": "Impostazioni che l'agente sa applicare (RNF-015). Lo schema completo delle capacità è in discussione.",
-      "items": { "type": "string", "pattern": "^setting:[a-z][a-z0-9_]{1,63}$" },
+      "description": "Cosa l'agente sa applicare (RNF-015): setting:<nome> per le impostazioni, apps:allowlist per le app consentite (ADR-0019).",
+      "items": {
+        "type": "string",
+        "pattern": "^(setting:[a-z][a-z0-9_]{1,63}|apps:allowlist)$"
+      },
       "uniqueItems": true,
       "maxItems": 200
     }
