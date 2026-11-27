@@ -104,6 +104,36 @@
                 "type": "string",
                 "maxLength": 100,
                 "description": "Nome da mostrare allo studente (per esempio per le app obbligatorie)."
+              },
+              "icon": {
+                "type": "string",
+                "maxLength": 500,
+                "pattern": "^https?://",
+                "description": "Logo dell'app (PNG o WebP), pubblico."
+              },
+              "install": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "url",
+                  "sha256"
+                ],
+                "description": "APK da installare in silenzio (ADR-0020): l'agente lo scarica con la propria credenziale, verifica sha256 e lo installa.",
+                "properties": {
+                  "url": {
+                    "type": "string",
+                    "maxLength": 500,
+                    "pattern": "^https?://"
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "size": {
+                    "type": "integer",
+                    "minimum": 1
+                  }
+                }
               }
             }
           }
