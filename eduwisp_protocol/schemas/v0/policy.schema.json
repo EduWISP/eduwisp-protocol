@@ -33,6 +33,12 @@
         },
         "screen_capture_disabled": {
           "type": "boolean"
+        },
+        "vpn_config_disabled": {
+          "type": "boolean"
+        },
+        "private_dns_config_disabled": {
+          "type": "boolean"
         }
       }
     },

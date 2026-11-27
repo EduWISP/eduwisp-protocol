@@ -94,3 +94,15 @@ def test_app_vietate_senza_elenco_consentite():
             "apps": {"mode": "blocklist", "allowed": [], "blocked": ["com.snapchat.android"]},
         },
     )
+
+
+def test_impostazioni_vpn_e_dns():
+    validate(
+        "policy",
+        {
+            "protocol_version": "0",
+            "policy_version": 1,
+            "poll_interval_seconds": 900,
+            "settings": {"vpn_config_disabled": True, "private_dns_config_disabled": True},
+        },
+    )
